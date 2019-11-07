@@ -16,7 +16,7 @@ public class ActorController {
 	
 	// list - return all actors
 	@GetMapping("/")
-	public JsonResponse listStuffies() {
+	public JsonResponse listActors() {
 		JsonResponse jr = null;
 		try  {
 			jr = JsonResponse.getInstance(actorRepo.findAll());			

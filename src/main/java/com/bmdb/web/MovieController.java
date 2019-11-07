@@ -16,7 +16,7 @@ public class MovieController {
 	
 	// list - return all movies
 	@GetMapping("/")
-	public JsonResponse listStuffies() {
+	public JsonResponse listMovies() {
 		JsonResponse jr = null;
 		try  {
 			jr = JsonResponse.getInstance(movieRepo.findAll());			

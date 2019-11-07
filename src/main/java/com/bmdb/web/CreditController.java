@@ -16,7 +16,7 @@ public class CreditController {
 	
 	// list - return all credits
 	@GetMapping("/")
-	public JsonResponse listStuffies() {
+	public JsonResponse listCredits() {
 		JsonResponse jr = null;
 		try  {
 			jr = JsonResponse.getInstance(creditRepo.findAll());			
