@@ -22,7 +22,8 @@ public class ActorController {
 			jr = JsonResponse.getInstance(actorRepo.findAll());			
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -35,7 +36,8 @@ public class ActorController {
 			jr = JsonResponse.getInstance(actorRepo.findById(id));
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -50,9 +52,11 @@ public class ActorController {
 		}
 		catch (DataIntegrityViolationException dive) {
 			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
+			dive.printStackTrace();
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -73,7 +77,8 @@ public class ActorController {
 			}
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -97,9 +102,11 @@ public class ActorController {
 		}
 		catch (DataIntegrityViolationException dive) {
 			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
+			dive.printStackTrace();
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}

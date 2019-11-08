@@ -51,8 +51,7 @@ public class JsonResponse {
 		return new JsonResponse(d);
 	}
 
-	// Create an instance w/ an exception... but this is currently ugly!
-	// How should we fix???
+	// Create an instance w/ an exception, use the message
 	public static JsonResponse getInstance(Exception e) {
 		return new JsonResponse(e.getMessage());
 	}

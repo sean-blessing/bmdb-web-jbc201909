@@ -22,7 +22,8 @@ public class MovieController {
 			jr = JsonResponse.getInstance(movieRepo.findAll());			
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -35,11 +36,25 @@ public class MovieController {
 			jr = JsonResponse.getInstance(movieRepo.findById(id));
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
-	
+
+	@GetMapping("/list-movies-for-rating")
+	public JsonResponse listMoviesForRating(@RequestParam String rating) {
+		JsonResponse jr = null;
+		try {
+			jr = JsonResponse.getInstance(movieRepo.findByRating(rating));
+		}
+		catch (Exception e) {
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
+		}
+		return jr;
+	}
+
 	// add - adds a new Movie
 	@PostMapping("/")
 	public JsonResponse addMovie(@RequestBody Movie m) {
@@ -50,9 +65,11 @@ public class MovieController {
 		}
 		catch (DataIntegrityViolationException dive) {
 			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
+			dive.printStackTrace();
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -73,7 +90,8 @@ public class MovieController {
 			}
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -97,9 +115,11 @@ public class MovieController {
 		}
 		catch (DataIntegrityViolationException dive) {
 			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
+			dive.printStackTrace();
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
