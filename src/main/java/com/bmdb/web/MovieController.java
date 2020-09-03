@@ -28,7 +28,7 @@ public class MovieController {
 		return jr;
 	}
 	
-	// get - return 1 stuff for the given id
+	// get - return 1 movie for the given id
 	@GetMapping("/{id}")
 	public JsonResponse getMovie(@PathVariable int id) {
 		JsonResponse jr = null;
@@ -85,7 +85,7 @@ public class MovieController {
 			}
 			else {
 				// record doesn't exist
-				jr = JsonResponse.getInstance("Error updating Movie.  id: "+
+				jr = JsonResponse.getErrorInstance("Error updating Movie.  id: "+
 											m.getId() + " doesn't exist!");
 			}
 		}
@@ -109,7 +109,7 @@ public class MovieController {
 			}
 			else {
 				// record doesn't exist
-				jr = JsonResponse.getInstance("Error deleting Movie.  id: "+
+				jr = JsonResponse.getErrorInstance("Error deleting Movie.  id: "+
 											id + " doesn't exist!");
 			}
 		}
