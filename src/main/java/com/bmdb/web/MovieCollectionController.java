@@ -80,6 +80,7 @@ public class MovieCollectionController {
 		try {
 			if (movieCollectionRepo.existsById(mc.getId())) {
 				jr = JsonResponse.getInstance(movieCollectionRepo.save(mc));
+				recalculateCollectionTotal(mc.getUser());
 			}
 			else {
 				// record doesn't exist
@@ -102,8 +103,11 @@ public class MovieCollectionController {
 		
 		try {
 			if (movieCollectionRepo.existsById(id)) {
+				MovieCollection mc = movieCollectionRepo.findById(id).get();
+				User u = mc.getUser();
 				movieCollectionRepo.deleteById(id);
 				jr = JsonResponse.getInstance("Delete successful!");
+				recalculateCollectionTotal(u);
 			}
 			else {
 				// record doesn't exist
